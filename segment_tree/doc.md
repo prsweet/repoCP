@@ -73,7 +73,13 @@ boundaries with just little more space
             int mid = start + (end - start)/2;
             if (idx <= mid) update(2 * nodeidx, start, mid, idx, val);
             else update(2 * nodeidx + 1, mid + 1, end, idx, val);
-            tree[nodeidx] = tree[2*nodeidx] + tree[2*nodeidx + 1]; // updating the sum
+            tree[nodeidx] = tree[2*nodeidx] + tree[2*nodeidx + 1]; 
+            // updating the sum
         }
     }
 ```
+
+This code run for O(N log N) unlike makeTree above that run in O(n), but
+in template i had used it instead of maketree, for code cleanliness and
+if we are using it will already take O(N log N) querying time so it doesn't
+matter much
