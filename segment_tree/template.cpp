@@ -5,8 +5,8 @@ struct Node {
     int sum;
     bool identity;
 
-    Node() {
-        identity = true;
+    Node(bool identity = true) {
+        this->identity = identity;
     }
 
     Node (int val) {
@@ -50,9 +50,9 @@ public:
         if (l.identity) return r;
         if (r.identity) return l;
         
-        Node parent(
-            l.sum + r.sum
-        );
+        Node parent(false);
+
+        parent.sum = l.sum + r.sum;
         
         return parent;
     }
