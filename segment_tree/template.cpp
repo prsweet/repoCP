@@ -75,3 +75,18 @@ int main()
     SegTree tree(n);
     for (int i = 0; i < n; i++) tree.update(i, { v[i] });
 }
+
+/*
+    HOW TO USE THIS TEMPLATE (code part only, theory is in doc.md):
+
+    1. struct Node fields:
+       - Add whatever the problem needs: sum / mn, mx / ans, l, r, sz etc.
+    2. Node() default:
+       - `bool identity = true;` marks empty/out-of-range.
+    3. Node(val) leaf:
+       - change signature to match your Node.
+       - Must set identity = false here.
+    4. merge(l, r) body after the two identity checks:
+       - write the problem logic here.
+       - Construct parent via leaf constructor so identity stays false,
+*/
