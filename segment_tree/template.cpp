@@ -5,11 +5,7 @@ struct Node {
     int sum;
     bool identity;
 
-    Node(bool identity = true) {
-        this->identity = identity;
-    }
-
-    Node (int val) {
+    Node (bool identity = 1, int val = 0) {
         identity = false;
         sum = val;
     }
@@ -50,7 +46,7 @@ public:
         if (l.identity) return r;
         if (r.identity) return l;
         
-        Node parent(false);
+        Node parent(0);
 
         parent.sum = l.sum + r.sum;
         
@@ -73,7 +69,7 @@ int main()
     for (int &i : v) cin >> i;
 
     SegTree tree(n);
-    for (int i = 0; i < n; i++) tree.update(i, { v[i] });
+    for (int i = 0; i < n; i++) tree.update(i, { 0, v[i] });
 }
 
 /*
@@ -81,12 +77,11 @@ int main()
 
     1. struct Node fields:
        - Add whatever the problem needs: sum / mn, mx / ans, l, r, sz etc.
-    2. Node() default:
+    2. Node(identity, val) leaf:
        - `bool identity = true;` marks empty/out-of-range.
-    3. Node(val) leaf:
+       - identity is set by default, unset it when updating the value 
        - change signature to match your Node.
-       - Must set identity = false here.
-    4. merge(l, r) body after the two identity checks:
-       - write the problem logic here.
-       - Construct parent via leaf constructor so identity stays false,
+    3. merge(l, r) body after the two identity checks:
+       - write the problem logic here,
+       - Construct parent via leaf constructor
 */
